@@ -1,11 +1,6 @@
-# Compiled DLLs
-*.dll
-*.exe
-*.pdb
-
 # Compiled files
-*.exe
 *.dll
+*.exe
 *.pdb
 *.cache
 *.ilk
@@ -20,12 +15,16 @@
 *.nupkg
 *.snk
 *.swp
-*.vs/
-*.vscode/
+*.lock.json
+*.ref
 
-# The build folders
+# Build directories
 bin/
 obj/
+
+# Rider & VS Code
+.idea/
+.vscode/
 
 # User-specific files
 *.rsuser
@@ -34,26 +33,15 @@ obj/
 *.userosscache
 *.sln.docstates
 
-# Logs and database
+# Logs
 *.log
-*.sql
-*.sqlite
-*.mdf
-*.ldf
-*.ndf
 
-# Package directories (NuGet, npm)
-node_modules/
+# NuGet packages
 packages/
 
-# ASP.NET Scaffolding
-.scaffolding
-
-# JetBrains Rider
-.idea/
-
-# Visual Studio Code
+# Visual Studio Code settings
 .vscode/
 
-# Resharper files
-_ReSharper*/
+# Build results
+bin/
+obj/

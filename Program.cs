@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using PruebaTecnica_DVP_Net_Kubernetes.Data;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,10 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
 
-// Cargar la configuración de UserData desde appsettings.json ANTES de construir la aplicación
+// Load UserData settings from appsettings.json BEFORE building the app
 builder.Services.Configure<UserDataConfig>(builder.Configuration.GetSection("UserData"));
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
-// Construir la aplicación
+// Build the app
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,11 +24,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Para no usar https en local
+// To not use https locally
 // app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 
 app.MapControllers();
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PruebaTecnica-DVP-Net-Kubernetes")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f635b1010461dccbf5b79738c2d69fccb4d1e3c7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4abe32bf579233c6b0230fe896164926cf72eb90")]
 [assembly: System.Reflection.AssemblyProductAttribute("PruebaTecnica-DVP-Net-Kubernetes")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PruebaTecnica-DVP-Net-Kubernetes")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
