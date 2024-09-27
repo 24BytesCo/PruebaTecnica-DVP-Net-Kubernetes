@@ -1,3 +1,4 @@
+using PruebaTecnica_DVP_Net_Kubernetes.Middleware;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,9 @@ if (app.Environment.IsDevelopment())
 
 // To not use https locally
 // app.UseHttpsRedirection();
+
+//Register JWT validation middleware
+app.UseMiddleware<JwtValidationMiddleware>();
 
 app.UseAuthorization();
 
