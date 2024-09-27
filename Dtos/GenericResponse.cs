@@ -32,12 +32,12 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Dtos
         /// <param name="data">The data to include in the response.</param>
         /// <param name="message">An optional success message.</param>
         /// <returns>A GenericResponse instance representing a successful operation.</returns>
-        public static GenericResponse<T> Success(T data)
+        public static GenericResponse<T> Success(T data, string message)
         {
             return new GenericResponse<T>
             {
                 IsError = false,
-                Message = "Ok",
+                Message = message,
                 Data = data
             };
         }

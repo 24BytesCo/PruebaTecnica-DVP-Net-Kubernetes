@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PruebaTecnica_DVP_Net_Kubernetes.Dtos
 {
-    public class UserRequestDto
+    public class UserLoginRequestDto
     {
         public string? Email { get; set; }
         public string? Password { get; set; }
