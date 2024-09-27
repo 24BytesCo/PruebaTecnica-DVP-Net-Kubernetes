@@ -15,15 +15,21 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole, string>
         base.OnModelCreating(modelBuilder);
 
         modelBuilder.Entity<WorkTask>()
-            .HasOne(w => w.CreatedByUserIdNavigation)
-            .WithMany(u => u.WorkTasks)
+            .HasOne(w => w.CreatedByUserNavigation)
+            .WithMany(u => u.CreatedWorkTasks)
             .HasForeignKey(w => w.CreatedByUserId)
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<WorkTask>()
+            .HasOne(w => w.AssignedToUserNavigation)
+            .WithMany(u => u.AssignedWorkTasks)
+            .HasForeignKey(w => w.AssignedToUserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<WorkTask>()
             .HasOne(w => w.WorkTaskStatusNavigation)
-            .WithMany(u=> u.WorkTask)
-            .HasForeignKey(w => w.TaskStatusId)
+            .WithMany(u => u.WorkTask)
+            .HasForeignKey(w => w.WorkTaskStatusId)
             .OnDelete(DeleteBehavior.Restrict);
     }
 

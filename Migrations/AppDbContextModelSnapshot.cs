@@ -230,13 +230,12 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTask", b =>
                 {
-                    b.Property<Guid>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("TaskId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AssignedToUserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedByUserId")
                         .IsRequired()
@@ -246,28 +245,30 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<Guid>("TaskStatusId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("WorkTaskStatusId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("TaskId");
+
+                    b.HasIndex("AssignedToUserId");
 
                     b.HasIndex("CreatedByUserId");
 
-                    b.HasIndex("TaskStatusId");
+                    b.HasIndex("WorkTaskStatusId");
 
                     b.ToTable("WorkTasks");
                 });
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTaskStatus", b =>
                 {
-                    b.Property<Guid>("TaskStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("WorkTaskStatusId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -283,7 +284,7 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("TaskStatusId");
+                    b.HasKey("WorkTaskStatusId");
 
                     b.ToTable("WorkTaskStatuses");
                 });
@@ -341,26 +342,36 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTask", b =>
                 {
-                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", "CreatedByUserIdNavigation")
-                        .WithMany("WorkTasks")
+                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", "AssignedToUserNavigation")
+                        .WithMany("CreatedWorkTasks")
+                        .HasForeignKey("AssignedToUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", "CreatedByUserNavigation")
+                        .WithMany("AssignedWorkTasks")
                         .HasForeignKey("CreatedByUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTaskStatus", "WorkTaskStatusNavigation")
                         .WithMany("WorkTask")
-                        .HasForeignKey("TaskStatusId")
+                        .HasForeignKey("WorkTaskStatusId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("CreatedByUserIdNavigation");
+                    b.Navigation("AssignedToUserNavigation");
+
+                    b.Navigation("CreatedByUserNavigation");
 
                     b.Navigation("WorkTaskStatusNavigation");
                 });
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.User", b =>
                 {
-                    b.Navigation("WorkTasks");
+                    b.Navigation("AssignedWorkTasks");
+
+                    b.Navigation("CreatedWorkTasks");
                 });
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTaskStatus", b =>

@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PruebaTecnica_DVP_Net_Kubernetes.Data;
 using PruebaTecnica_DVP_Net_Kubernetes.Dtos;
 using PruebaTecnica_DVP_Net_Kubernetes.Dtos.WorkTask;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 using PruebaTecnica_DVP_Net_Kubernetes.Token;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService
 {
@@ -18,15 +21,21 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService
     {
         private readonly AppDbContext _context;
         private readonly IUserSesion _userSesion;
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<User> _userManager;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// Constructor for WorkTaskService.
         /// </summary>
         /// <param name="context">Database context to be injected.</param>
-        public WorkTaskService(AppDbContext context, IUserSesion userSesion)
+        public WorkTaskService(AppDbContext context, IUserSesion userSesion, RoleManager<IdentityRole> roleManager, UserManager<User> userManager, IMapper mapper)
         {
             _context = context;
             _userSesion = userSesion;
+            _roleManager = roleManager;
+            _userManager = userManager;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -34,48 +43,179 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService
         /// </summary>
         /// <param name="taskCreateDto">DTO with the information required to create a task.</param>
         /// <returns>Returns a GenericResponse with the newly created task.</returns>
-        public async Task<GenericResponse<WorkTask>> CreateTaskAsync(TaskCreateRequestDto taskCreateDto)
+        public async Task<GenericResponse<NewCreateWorkTaskDto>> CreateTaskAsync(TaskCreateRequestDto taskCreateDto)
         {
+            //Searching in bd for the id of the Pending Status
+            var statePending = await _context.WorkTaskStatuses!.SingleOrDefaultAsync(r => r.Code == "PEN");
+
+            if (statePending == null)
+            {
+                return GenericResponse<NewCreateWorkTaskDto>.Error("Status Task Pending not found");
+            }
+
+            var emailUserLogged =  _userSesion.GetUserSesion();
+
+            var user = await _userManager.FindByEmailAsync(emailUserLogged);
+
+            var assignedUser = await _userManager.FindByIdAsync(taskCreateDto.UserAssignedId);
+            if (assignedUser == null)
+            {
+                return GenericResponse<NewCreateWorkTaskDto>.Error("Assigned user not found");
+            }
+
             var newTask = new WorkTask
             {
+                TaskId = Guid.NewGuid().ToString(),
                 Title = taskCreateDto.Name,
-                Description = taskCreateDto.Description
+                Description = taskCreateDto.Description,
+                AssignedToUserId = assignedUser.Id, // Aseguramos que sea el ID del usuario asignado
+                WorkTaskStatusId = statePending.WorkTaskStatusId,
+                CreatedByUserId = user.Id
             };
 
             await _context.WorkTasks!.AddAsync(newTask);
             await _context.SaveChangesAsync();
+            var newTaskDto = _mapper.Map<NewCreateWorkTaskDto>(newTask);
 
-            return GenericResponse<WorkTask>.Success(newTask, "Task created successfully");
+            return GenericResponse<NewCreateWorkTaskDto>.Success(newTaskDto, "Task created successfully");
         }
 
         /// <summary>
         /// Retrieves all the tasks.
         /// </summary>
         /// <returns>Returns a list of all tasks.</returns>
-        public async Task<GenericResponse<List<WorkTask>>> GetAllTasksAsync()
+        public async Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTasksAsync()
         {
-            var tasks = await _context.WorkTasks!.ToListAsync();
+            var tasks = await _context.WorkTasks!
+                .Include(r=> r.WorkTaskStatusNavigation)
+                .Include(r=> r.AssignedToUserNavigation)
+                .Include(r=> r.CreatedByUserNavigation)
+                .ToListAsync();
             if (tasks.Count == 0)
             {
-                return GenericResponse<List<WorkTask>>.Error("No tasks found");
+                return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("No tasks found");
             }
-            return GenericResponse<List<WorkTask>>.Success(tasks, "All Tasks found");
+            var taskDto = _mapper.Map<List<GetAllTheTasksAssignedToMeResponseDto>>(tasks);
+
+            List<GetAllTheTasksAssignedToMeResponseDto> result = new();
+
+            foreach (var taskItem in taskDto)
+            {
+                GetAllTheTasksAssignedToMeResponseDto objAssigned = new();
+                objAssigned = taskItem;
+
+                objAssigned.UserAssignedObj!.NameCompleted = taskItem.UserAssignedObj!.FirstName + " " + taskItem.UserAssignedObj!.LastName;
+
+                objAssigned.UserByCreatedObj!.NameCompleted = taskItem.UserByCreatedObj!.FirstName + " " + taskItem.UserByCreatedObj!.LastName;
+
+                var roleUserBd = await _context.UserRoles.SingleOrDefaultAsync(r => r.UserId == taskItem.UserAssignedObj!.UserId);
+
+                if (roleUserBd == null)
+                {
+                    return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("The assigned user has no roles assigned, UserId: " + taskItem.UserAssignedObj!.UserId);
+                }
+
+                var roleBd = await _context.Roles.SingleOrDefaultAsync(r => r.Id == roleUserBd.RoleId);
+
+                if (roleBd == null)
+                {
+                    return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("The assigned role does not exist, RoleId: " + roleUserBd.RoleId);
+
+                }
+
+                objAssigned.UserAssignedObj!.RoleId = roleUserBd.RoleId;
+                objAssigned.UserAssignedObj!.RoleName = roleBd.Name;
+
+                objAssigned.UserByCreatedObj!.RoleId = roleUserBd.RoleId;
+                objAssigned.UserByCreatedObj!.RoleName = roleBd.Name;
+
+                var workTaskStateBd = await _context.WorkTasks!
+                    .Include(t => t.WorkTaskStatusNavigation)
+                    .FirstOrDefaultAsync(r => r.TaskId == taskItem.WorkTaskId);
+
+                if (workTaskStateBd == null)
+                {
+                    return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("The assigned task does not exist in the system, WorkTaskId: " + taskItem.WorkTaskId);
+                }
+
+                objAssigned.WorkTaskStateObj!.WorkTaskStateId = workTaskStateBd.WorkTaskStatusNavigation!.WorkTaskStatusId;
+                objAssigned.WorkTaskStateObj!.Code = workTaskStateBd.WorkTaskStatusNavigation!.Code;
+                objAssigned.WorkTaskStateObj!.Name = workTaskStateBd.WorkTaskStatusNavigation!.Name;
+                objAssigned.WorkTaskStateObj!.Description = workTaskStateBd.WorkTaskStatusNavigation!.Description;
+
+                result.Add(objAssigned);
+            }
+
+            return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Success(result, "All Tasks found");
         }
 
         /// <summary>
         /// Recovers all tasks assigned to the logged in user.
         /// </summary>
         /// <returns>Returns a list of all tasks assigned to the logged in user.</returns>
-        public async Task<GenericResponse<List<WorkTask>>> GetAllTheTasksAssignedToMe() 
+        public async Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTheTasksAssignedToMe() 
         {
-            var userIdLogged = _userSesion.GetUserSesion();
+            var emailUserLogged = _userSesion.GetUserSesion();
 
-            var task = await _context.WorkTasks!.Where(r=> r.AssignedToUserId == userIdLogged).ToListAsync();
-            if (task == null)
+            var user = await _userManager.FindByEmailAsync(emailUserLogged);
+            var tasks = await _context.WorkTasks!.Where(r=> r.AssignedToUserId == user!.Id).ToListAsync();
+            if (tasks == null)
             {
-                return GenericResponse<List<WorkTask>>.Error("Task not found");
+                return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("Task not found");
             }
-            return GenericResponse<List<WorkTask>>.Success(task, "Task found");
+            var taskDto = _mapper.Map<List<GetAllTheTasksAssignedToMeResponseDto>>(tasks);
+
+            List<GetAllTheTasksAssignedToMeResponseDto> result = new(); 
+
+            foreach (var taskItem in taskDto)
+            {
+                GetAllTheTasksAssignedToMeResponseDto objAssigned = new();
+                objAssigned = taskItem;
+                
+                objAssigned.UserAssignedObj!.NameCompleted = taskItem.UserAssignedObj!.FirstName +" "+ taskItem.UserAssignedObj!.LastName;
+                
+                objAssigned.UserByCreatedObj!.NameCompleted = taskItem.UserByCreatedObj!.FirstName +" "+ taskItem.UserByCreatedObj!.LastName;
+                
+                var roleUserBd = await _context.UserRoles.SingleOrDefaultAsync(r => r.UserId == taskItem.UserAssignedObj!.UserId);
+
+                if (roleUserBd == null)
+                {
+                    return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("The assigned user has no roles assigned, UserId: " + taskItem.UserAssignedObj!.UserId);
+                }
+
+                var roleBd = await _context.Roles.SingleOrDefaultAsync(r => r.Id == roleUserBd.RoleId);
+
+                if (roleBd == null)
+                {
+                    return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("The assigned role does not exist, RoleId: " + roleUserBd.RoleId);
+
+                }
+
+                objAssigned.UserAssignedObj!.RoleId = roleUserBd.RoleId;
+                objAssigned.UserAssignedObj!.RoleName = roleBd.Name;
+
+                objAssigned.UserByCreatedObj!.RoleId = roleUserBd.RoleId;
+                objAssigned.UserByCreatedObj!.RoleName = roleBd.Name;
+
+                var workTaskStateBd = await _context.WorkTasks!
+                    .Include(t => t.WorkTaskStatusNavigation)
+                    .FirstOrDefaultAsync(r=> r.TaskId == taskItem.WorkTaskId);
+
+                if (workTaskStateBd == null)
+                {
+                    return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Error("The assigned task does not exist in the system, WorkTaskId: " + taskItem.WorkTaskId);
+                }
+
+                objAssigned.WorkTaskStateObj!.WorkTaskStateId = workTaskStateBd.WorkTaskStatusNavigation!.WorkTaskStatusId;
+                objAssigned.WorkTaskStateObj!.Code = workTaskStateBd.WorkTaskStatusNavigation!.Code;
+                objAssigned.WorkTaskStateObj!.Name = workTaskStateBd.WorkTaskStatusNavigation!.Name;
+                objAssigned.WorkTaskStateObj!.Description = workTaskStateBd.WorkTaskStatusNavigation!.Description;
+
+                result.Add(objAssigned);
+            }
+
+
+            return GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>.Success(result, "Task found");
         }
 
         /// <summary>

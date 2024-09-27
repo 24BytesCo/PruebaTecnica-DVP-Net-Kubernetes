@@ -12,6 +12,8 @@ using PruebaTecnica_DVP_Net_Kubernetes.Services.UserService;
 using PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService;
 using PruebaTecnica_DVP_Net_Kubernetes.Token;
 using System.Text;
+using AutoMapper;
+using PruebaTecnica_DVP_Net_Kubernetes.MappingProfile;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -69,6 +71,8 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Administrador"));
     options.AddPolicy("RequireSupervisorRole", policy => policy.RequireRole("Supervisor"));
+    options.AddPolicy("RequireSupervisorRole", policy => policy.RequireRole("Administrador", "Supervisor"));
+
 });
 
 // Configurar CORS
@@ -82,6 +86,15 @@ builder.Services.AddControllers(config =>
                      .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
 });
+
+// Configurar AutoMapper manualmente
+var mapperConfig = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile<MappingProfile>(); // Aquí agregas tu perfil de AutoMapper
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
 
 // Configurar Swagger con seguridad JWT
 builder.Services.AddSwaggerGen(c =>

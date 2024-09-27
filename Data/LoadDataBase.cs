@@ -56,7 +56,7 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Data
                             Code = status.Value.Code,
                             Description = status.Value.Description,
                             Name = status.Key,
-                            TaskStatusId = Guid.NewGuid()
+                            WorkTaskStatusId = Guid.NewGuid().ToString(),
                         };
 
                         await appDbContext.AddAsync(newWorkTaskStatus);

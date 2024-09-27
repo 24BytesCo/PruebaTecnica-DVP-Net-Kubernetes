@@ -19,8 +19,9 @@ using System.Threading.Tasks;
                 _taskService = taskService;
             }
 
-            // Crear una nueva tarea
-            [HttpPost("create")]
+        // Crear una nueva tarea
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPost("create")]
             public async Task<IActionResult> CreateTask([FromBody] TaskCreateRequestDto requestDto)
             {
                 var result = await _taskService.CreateTaskAsync(requestDto);
@@ -32,8 +33,7 @@ using System.Threading.Tasks;
             }
 
         // Obtener todas las tareas
-        [Authorize(Policy = "RequireAdminRole")]
-        [Authorize(Policy = "RequireSupervisorRole")]
+        [Authorize(Roles = "Administrador, Supervisor")]
         [HttpGet("all")]
             public async Task<IActionResult> GetAllTasks()
             {
@@ -48,7 +48,7 @@ using System.Threading.Tasks;
         [HttpGet("GetAllAssignedToMe")]
         public async Task<IActionResult> GetAllAssignedToMe()
         {
-            var result = await _taskService.GetAllTasksAsync();
+            var result = await _taskService.GetAllTheTasksAssignedToMe();
             if (!result.IsSuccessful)
             {
                 return NotFound(result.Message);

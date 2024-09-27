@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\models\\worktaskstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:models\\worktaskstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\models\\worktask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:models\\worktask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\services\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:services\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\models\\userdataconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:models\\userdataconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\controllers\\worktaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:controllers\\worktaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\services\\worktaskservice\\worktaskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,12 +31,8 @@
       "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\controllers\\worktaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:controllers\\worktaskcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\services\\worktaskservice\\iworktaskservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,32 +43,32 @@
       "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\worktask\\taskcreaterequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\dtos\\user\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\user\\userresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\dtos\\worktaskstate\\worktaskstateminimalresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\worktaskstate\\worktaskstateminimalresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\token\\jwtgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:token\\jwtgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\dtos\\user\\userminimalresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\user\\userminimalresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\token\\ijwtgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:token\\ijwtgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\dtos\\worktask\\getallthetasksassignedtomeresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\worktask\\getallthetasksassignedtomeresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\services\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:services\\userservice\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\dtos\\worktask\\newcreateworktaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\worktask\\newcreateworktaskdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\data\\loaddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:data\\loaddatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\dtos\\user\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:dtos\\user\\userregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|c:\\cenfys\\pruebatecnica-dvp-net-kubernetes\\services\\userservice\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0404A6D0-0196-4558-A614-EBF3DE30DC4A}|PruebaTecnica-DVP-Net-Kubernetes.csproj|solutionrelative:services\\userservice\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,20 +78,74 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAJQAAAAAAAAAAAAuwKIAAAA4AAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "IWorkTaskService.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\IWorkTaskService.cs",
+              "RelativeDocumentMoniker": "Services\\WorkTaskService\\IWorkTaskService.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\IWorkTaskService.cs",
+              "RelativeToolTip": "Services\\WorkTaskService\\IWorkTaskService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAASwBAAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T08:06:04.578Z",
+              "WhenOpened": "2024-09-27T13:49:35.977Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WorkTaskService.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\WorkTaskService.cs",
+              "RelativeDocumentMoniker": "Services\\WorkTaskService\\WorkTaskService.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\WorkTaskService.cs",
+              "RelativeToolTip": "Services\\WorkTaskService\\WorkTaskService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwC0AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T13:02:53.068Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAiwCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T14:45:14.098Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WorkTask.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\WorkTask.cs",
+              "RelativeDocumentMoniker": "Models\\WorkTask.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\WorkTask.cs",
+              "RelativeToolTip": "Models\\WorkTask.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAiwEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T18:17:36.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserDataConfig.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\UserDataConfig.cs",
+              "RelativeDocumentMoniker": "Models\\UserDataConfig.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\UserDataConfig.cs",
+              "RelativeToolTip": "Models\\UserDataConfig.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T18:17:32.27Z",
               "EditorCaption": ""
             },
             {
@@ -108,197 +166,158 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "WorkTaskService.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\WorkTaskService.cs",
-              "RelativeDocumentMoniker": "Services\\WorkTaskService\\WorkTaskService.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\WorkTaskService.cs",
-              "RelativeToolTip": "Services\\WorkTaskService\\WorkTaskService.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAAwEgAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T11:38:00.849Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WorkTask.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\WorkTask.cs",
-              "RelativeDocumentMoniker": "Models\\WorkTask.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\WorkTask.cs",
-              "RelativeToolTip": "Models\\WorkTask.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAxwD0AAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T12:12:02.274Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAgwBcAAAAzAAAAAAAAAA==",
+              "Title": "WorkTaskStatus.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\WorkTaskStatus.cs",
+              "RelativeDocumentMoniker": "Models\\WorkTaskStatus.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Models\\WorkTaskStatus.cs",
+              "RelativeToolTip": "Models\\WorkTaskStatus.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAiwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T08:45:54.086Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\UserService\\UserService.cs",
-              "RelativeDocumentMoniker": "Services\\UserService\\UserService.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\UserService\\UserService.cs",
-              "RelativeToolTip": "Services\\UserService\\UserService.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAgwKUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T09:47:28.804Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WorkTaskController.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\WorkTaskController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WorkTaskController.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\WorkTaskController.cs",
-              "RelativeToolTip": "Controllers\\WorkTaskController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAA8wDIAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T11:31:34.13Z",
+              "WhenOpened": "2024-09-27T15:01:43.461Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "IWorkTaskService.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\IWorkTaskService.cs",
-              "RelativeDocumentMoniker": "Services\\WorkTaskService\\IWorkTaskService.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\WorkTaskService\\IWorkTaskService.cs",
-              "RelativeToolTip": "Services\\WorkTaskService\\IWorkTaskService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAmwBYAAAAxAAAAAAAAAA==",
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwCcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T11:37:23.953Z",
+              "WhenOpened": "2024-09-27T14:59:40.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwDYAAAA+AAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAuwLoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T09:45:32.417Z",
+              "WhenOpened": "2024-09-27T13:21:47.576Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TaskCreateRequestDto.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\TaskCreateRequestDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\WorkTask\\TaskCreateRequestDto.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\TaskCreateRequestDto.cs",
-              "RelativeToolTip": "Dtos\\WorkTask\\TaskCreateRequestDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "WorkTaskController.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\WorkTaskController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WorkTaskController.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\WorkTaskController.cs",
+              "RelativeToolTip": "Controllers\\WorkTaskController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAywBoAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T11:33:31.371Z",
+              "WhenOpened": "2024-09-27T13:01:09.609Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "UserResponseDto.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\User\\UserResponseDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\User\\UserResponseDto.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\User\\UserResponseDto.cs",
-              "RelativeToolTip": "Dtos\\User\\UserResponseDto.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAD4vxAAAAAFAAAAAAAAAA==",
+              "Title": "TaskCreateRequestDto.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\TaskCreateRequestDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\WorkTask\\TaskCreateRequestDto.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\TaskCreateRequestDto.cs",
+              "RelativeToolTip": "Dtos\\WorkTask\\TaskCreateRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T10:05:42.258Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "JwtGenerator.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Token\\JwtGenerator.cs",
-              "RelativeDocumentMoniker": "Token\\JwtGenerator.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Token\\JwtGenerator.cs",
-              "RelativeToolTip": "Token\\JwtGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T10:24:09.117Z",
+              "WhenOpened": "2024-09-27T13:05:05.15Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-27T08:08:57.548Z",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T17:44:11.396Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IJwtGenerator.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Token\\IJwtGenerator.cs",
-              "RelativeDocumentMoniker": "Token\\IJwtGenerator.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Token\\IJwtGenerator.cs",
-              "RelativeToolTip": "Token\\IJwtGenerator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAABSAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "WorkTaskStateMinimalResponseDto.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTaskState\\WorkTaskStateMinimalResponseDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\WorkTaskState\\WorkTaskStateMinimalResponseDto.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTaskState\\WorkTaskStateMinimalResponseDto.cs",
+              "RelativeToolTip": "Dtos\\WorkTaskState\\WorkTaskStateMinimalResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T10:25:56.171Z",
+              "WhenOpened": "2024-09-27T13:56:27.928Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "LoadDataBase.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\LoadDataBase.cs",
-              "RelativeDocumentMoniker": "Data\\LoadDataBase.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\LoadDataBase.cs",
-              "RelativeToolTip": "Data\\LoadDataBase.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAnwFEAAAATAAAAAAAAAA==",
+              "Title": "GetAllTheTasksAssignedToMeResponseDto.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\GetAllTheTasksAssignedToMeResponseDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\WorkTask\\GetAllTheTasksAssignedToMeResponseDto.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\GetAllTheTasksAssignedToMeResponseDto.cs",
+              "RelativeToolTip": "Dtos\\WorkTask\\GetAllTheTasksAssignedToMeResponseDto.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAuwAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T08:38:46.178Z",
+              "WhenOpened": "2024-09-27T14:36:44.25Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\UserService\\IUserService.cs",
-              "RelativeDocumentMoniker": "Services\\UserService\\IUserService.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\UserService\\IUserService.cs",
-              "RelativeToolTip": "Services\\UserService\\IUserService.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAIwCUAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "UserMinimalResponseDto.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\User\\UserMinimalResponseDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\User\\UserMinimalResponseDto.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\User\\UserMinimalResponseDto.cs",
+              "RelativeToolTip": "Dtos\\User\\UserMinimalResponseDto.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA8wA4AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T09:50:38.598Z",
+              "WhenOpened": "2024-09-27T13:52:01.741Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "UserRegisterDto.cs",
-              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\User\\UserRegisterDto.cs",
-              "RelativeDocumentMoniker": "Dtos\\User\\UserRegisterDto.cs",
-              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\User\\UserRegisterDto.cs",
-              "RelativeToolTip": "Dtos\\User\\UserRegisterDto.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAtAAAAAAAAAA==",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\UserService\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService\\UserService.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Services\\UserService\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService\\UserService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAA1wCoAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T09:53:54.02Z",
+              "WhenOpened": "2024-09-27T13:07:17.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "NewCreateWorkTaskDto.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\NewCreateWorkTaskDto.cs",
+              "RelativeDocumentMoniker": "Dtos\\WorkTask\\NewCreateWorkTaskDto.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Dtos\\WorkTask\\NewCreateWorkTaskDto.cs",
+              "RelativeToolTip": "Dtos\\WorkTask\\NewCreateWorkTaskDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T16:14:34.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "LoadDataBase.cs",
+              "DocumentMoniker": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\LoadDataBase.cs",
+              "RelativeDocumentMoniker": "Data\\LoadDataBase.cs",
+              "ToolTip": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\Data\\LoadDataBase.cs",
+              "RelativeToolTip": "Data\\LoadDataBase.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAkwDoAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-27T15:46:43.709Z",
               "EditorCaption": ""
             }
           ]

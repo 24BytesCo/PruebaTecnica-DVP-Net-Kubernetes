@@ -14,7 +14,7 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Models
         /// </summary>
         [Key]
         [Required]
-        public Guid TaskStatusId { get; set; } 
+        public string? WorkTaskStatusId { get; set; } 
 
         /// <summary>
         /// The name of the task status (e.g., Pending, In Progress, Completed).
@@ -34,10 +34,11 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Models
         /// </summary>
         [Required]
         [MaxLength(10)]
-        public string? Code { get; set; } 
+        public string? Code { get; set; }
 
         /// <summary>
         /// A collection of work tasks that have this status.
+        /// TaskStatusNavigation 
         /// </summary>
         public ICollection<WorkTask>? WorkTask { get; set; } 
     }

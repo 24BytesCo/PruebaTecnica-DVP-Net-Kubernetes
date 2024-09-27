@@ -12,8 +12,8 @@ using PruebaTecnica_DVP_Net_Kubernetes.Data;
 namespace PruebaTecnicaDVPNetKubernetes.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240927085105_firsMigration")]
-    partial class firsMigration
+    [Migration("20240927182020_MigrationUno")]
+    partial class MigrationUno
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -233,9 +233,12 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTask", b =>
                 {
-                    b.Property<Guid>("TaskId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("TaskId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AssignedToUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedByUserId")
                         .IsRequired()
@@ -245,33 +248,30 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<Guid>("TaskStatusId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("WorkTaskStatusId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("TaskId");
 
+                    b.HasIndex("AssignedToUserId");
+
                     b.HasIndex("CreatedByUserId");
 
-                    b.HasIndex("TaskStatusId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("WorkTaskStatusId");
 
                     b.ToTable("WorkTasks");
                 });
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTaskStatus", b =>
                 {
-                    b.Property<Guid>("TaskStatusId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("WorkTaskStatusId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -287,7 +287,7 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("TaskStatusId");
+                    b.HasKey("WorkTaskStatusId");
 
                     b.ToTable("WorkTaskStatuses");
                 });
@@ -345,21 +345,25 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
 
             modelBuilder.Entity("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTask", b =>
                 {
-                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", "CreatedByUserNavigation")
+                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", "AssignedToUserNavigation")
                         .WithMany("CreatedWorkTasks")
+                        .HasForeignKey("AssignedToUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", "CreatedByUserNavigation")
+                        .WithMany("AssignedWorkTasks")
                         .HasForeignKey("CreatedByUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.WorkTaskStatus", "WorkTaskStatusNavigation")
                         .WithMany("WorkTask")
-                        .HasForeignKey("TaskStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("WorkTaskStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("PruebaTecnica_DVP_Net_Kubernetes.Models.User", null)
-                        .WithMany("AssignedWorkTasks")
-                        .HasForeignKey("UserId");
+                    b.Navigation("AssignedToUserNavigation");
 
                     b.Navigation("CreatedByUserNavigation");
 

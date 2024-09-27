@@ -14,19 +14,19 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService
         /// </summary>
         /// <param name="taskCreateDto">DTO with the information required to create a task.</param>
         /// <returns>Returns a GenericResponse with the newly created task.</returns>
-        Task<GenericResponse<WorkTask>> CreateTaskAsync(TaskCreateRequestDto taskCreateDto);
+        Task<GenericResponse<NewCreateWorkTaskDto>> CreateTaskAsync(TaskCreateRequestDto taskCreateDto);
         
         /// <summary>
         /// Retrieves all the tasks.
         /// </summary>
         /// <returns>Returns a list of all tasks.</returns>
-        Task<GenericResponse<List<WorkTask>>> GetAllTasksAsync();
+        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTasksAsync();
 
         /// <summary>
         /// Recovers all tasks assigned to the logged in user.
         /// </summary>
         /// <returns>Returns a list of all tasks assigned to the logged in user.</returns>
-        Task<GenericResponse<List<WorkTask>>> GetAllTheTasksAssignedToMe();
+        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTheTasksAssignedToMe();
 
         /// <summary>
         /// Retrieves a specific task by ID.

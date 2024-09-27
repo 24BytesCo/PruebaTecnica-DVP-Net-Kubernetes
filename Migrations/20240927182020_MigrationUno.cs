@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace PruebaTecnicaDVPNetKubernetes.Migrations
 {
     /// <inheritdoc />
-    public partial class firsMigration : Migration
+    public partial class MigrationUno : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -56,14 +56,14 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                 name: "WorkTaskStatuses",
                 columns: table => new
                 {
-                    TaskStatusId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WorkTaskStatusId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Code = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkTaskStatuses", x => x.TaskStatusId);
+                    table.PrimaryKey("PK_WorkTaskStatuses", x => x.WorkTaskStatusId);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,33 +176,34 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                 name: "WorkTasks",
                 columns: table => new
                 {
-                    TaskId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TaskId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    AssignedToUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedByUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    TaskStatusId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    WorkTaskStatusId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WorkTasks", x => x.TaskId);
                     table.ForeignKey(
+                        name: "FK_WorkTasks_AspNetUsers_AssignedToUserId",
+                        column: x => x.AssignedToUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_WorkTasks_AspNetUsers_CreatedByUserId",
                         column: x => x.CreatedByUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_WorkTasks_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_WorkTasks_WorkTaskStatuses_TaskStatusId",
-                        column: x => x.TaskStatusId,
+                        name: "FK_WorkTasks_WorkTaskStatuses_WorkTaskStatusId",
+                        column: x => x.WorkTaskStatusId,
                         principalTable: "WorkTaskStatuses",
-                        principalColumn: "TaskStatusId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "WorkTaskStatusId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -245,19 +246,19 @@ namespace PruebaTecnicaDVPNetKubernetes.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_WorkTasks_AssignedToUserId",
+                table: "WorkTasks",
+                column: "AssignedToUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_WorkTasks_CreatedByUserId",
                 table: "WorkTasks",
                 column: "CreatedByUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkTasks_TaskStatusId",
+                name: "IX_WorkTasks_WorkTaskStatusId",
                 table: "WorkTasks",
-                column: "TaskStatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_WorkTasks_UserId",
-                table: "WorkTasks",
-                column: "UserId");
+                column: "WorkTaskStatusId");
         }
 
         /// <inheritdoc />
