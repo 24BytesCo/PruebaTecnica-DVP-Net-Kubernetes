@@ -17,7 +17,8 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
             _userService = userService;
         }
 
-        [AllowAnonymous]
+        // Endpoint que requiere autorización basada en el rol Admin
+        [Authorize(Policy = "RequireAdminRole")]
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserRegisterDto userRegisterDto)
         {
@@ -25,6 +26,7 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
             return Ok(result);
         }
 
+        // Permite acceso anónimo (sin requerir token)
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginRequestDto userLoginRequestDto)
@@ -33,13 +35,27 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
             return Ok(result);
         }
 
+        // Endpoint que requiere autenticación (requiere un token válido)
+        [Authorize]
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            var result = await _userService.LogoutUserAsync();
+            if (!result.IsSuccessful)
+                return BadRequest(result.Message);
+
+            return Ok(result);
+        }
+
+        // Endpoint que requiere autenticación (requiere un token válido)
+        [Authorize]
         [HttpGet("me")]
         public async Task<IActionResult> GetLoggedUser()
         {
             var result = await _userService.GetLoggedUserAsync();
             if (result == null)
                 return Unauthorized();
-            
+
             return Ok(result);
         }
     }

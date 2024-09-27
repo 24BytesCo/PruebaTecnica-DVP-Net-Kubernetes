@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace PruebaTecnica_DVP_Net_Kubernetes.Token
 {
@@ -13,14 +14,17 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Token
     public class JwtGenerator : IJwtGenerator
     {
         private readonly JwtSettings _jwtSettings;
+        private readonly UserManager<User> _userManager;
 
         /// <summary>
         /// Constructor that injects the JWT settings from the configuration.
         /// </summary>
         /// <param name="jwtSettings">An instance of JwtSettings containing the JWT configuration options such as the secret key, issuer, and audience.</param>
-        public JwtGenerator(IOptions<JwtSettings> jwtSettings)
+        /// <param name="userManager">The UserManager to retrieve user roles.</param>
+        public JwtGenerator(IOptions<JwtSettings> jwtSettings, UserManager<User> userManager)
         {
             _jwtSettings = jwtSettings.Value;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -28,7 +32,7 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Token
         /// </summary>
         /// <param name="user">The user for whom the token is being generated.</param>
         /// <returns>A string representation of the generated JWT token.</returns>
-        public string GenerateJwtToken(User user)
+        public async Task<string> GenerateJwtToken(User user)
         {
             //Creating the data that the token will carry
             var claims = new List<Claim>
@@ -38,6 +42,10 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Token
                 new("Email", user.Email?? ""),
                 new("NameCompleted", $"{user.FirstName ?? string.Empty} {user.LastName ?? string.Empty}")
             };
+
+            // Get the roles associated with the user and add them as claims
+            var roles = await _userManager.GetRolesAsync(user);
+            claims.AddRange(roles.Select(role => new Claim(ClaimsIdentity.DefaultRoleClaimType, role)));
 
             // Get the secret key from the configuration (appsettings.json)
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret ?? string.Empty));

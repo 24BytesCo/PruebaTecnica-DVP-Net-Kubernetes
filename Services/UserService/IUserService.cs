@@ -30,5 +30,10 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
         /// </summary>
         /// <returns>A GenericResponse containing the logged-in user's details.</returns>
         Task<GenericResponse<UserResponseDto?>> GetLoggedUserAsync();
+        /// <summary>
+        /// Logs out the current user.
+        /// </summary>
+        /// <returns>A GenericResponse indicating the result of the logout operation.</returns>
+        Task<GenericResponse<bool>> LogoutUserAsync();
     }
 }

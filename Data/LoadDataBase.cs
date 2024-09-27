@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 using System.Threading.Tasks;
@@ -36,12 +37,40 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Data
                     }
                 }
 
+                // Diccionario para mapear nombres a códigos y descripciones
+                var workTaskStatusMapping = new Dictionary<string, (string Code, string Description)>
+                {
+                    { "Pendiente", ("PEN", "Pendiente por terminar") },
+                    { "En Proceso", ("ENPRO", "En proceso") },
+                    { "Completada", ("COMP", "Terminada") }
+                };
+
+                foreach (var status in workTaskStatusMapping)
+                {
+                    WorkTaskStatus? existWorkTaskStatus = await appDbContext.WorkTaskStatuses!.SingleOrDefaultAsync(r => r.Name == status.Key);
+
+                    if (existWorkTaskStatus == null)
+                    {
+                        WorkTaskStatus newWorkTaskStatus = new()
+                        {
+                            Code = status.Value.Code,
+                            Description = status.Value.Description,
+                            Name = status.Key,
+                            TaskStatusId = Guid.NewGuid()
+                        };
+
+                        await appDbContext.AddAsync(newWorkTaskStatus);
+                    }
+                }
+
+
                 User newUser = new()
                 {
                     FirstName = userData.FirstName,
                     LastName = userData.LastName,
                     Email = userData.Email,
-                    UserName = userData.Email, 
+                    UserName = userData.Email,
+                    Id = Guid.NewGuid().ToString(),
                 };
 
                 // Create the user with a password

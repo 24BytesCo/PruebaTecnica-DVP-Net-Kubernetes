@@ -13,13 +13,16 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
         private readonly SignInManager<User> _signInManager;
         private readonly IUserSesion _userSesion;
         private readonly IJwtGenerator _jwtGenerator;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(UserManager<User> userManager, SignInManager<User> signInManager, IUserSesion userSesion, IJwtGenerator jwtGenerator)
+
+        public UserService(UserManager<User> userManager, SignInManager<User> signInManager, IUserSesion userSesion, IJwtGenerator jwtGenerator, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _userSesion = userSesion;
             _jwtGenerator = jwtGenerator;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -32,8 +35,16 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
             try
             {
                 // Check if user already exists
-                if (await _userManager.FindByEmailAsync(registerDto.Email) != null)
+                if (await _userManager.FindByEmailAsync(registerDto.Email!) != null)
                     return GenericResponse<UserResponseDto>.Error("The user already exists.");
+
+                //Validate if the role exists
+                var existRoleManager = await _roleManager.FindByIdAsync(registerDto.RoleId!);
+                
+                if (existRoleManager == null)
+                {
+                    return GenericResponse<UserResponseDto>.Error("The role to be assigned does not exist in the system");
+                }
 
                 var newUser = new User
                 {
@@ -48,8 +59,11 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
                 if (!result.Succeeded)
                     return GenericResponse<UserResponseDto>.Error("Error creating the user: " + string.Join(", ", result.Errors));
 
+                //Assigning the role to the user
+                await _userManager.AddToRoleAsync(newUser, existRoleManager.Name!);
+
                 // Generate a JWT token
-                var token = _jwtGenerator.GenerateJwtToken(newUser);
+                var token = await _jwtGenerator.GenerateJwtToken(newUser);
 
                 var userResponse = new UserResponseDto
                 {
@@ -57,7 +71,8 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
                     Email = newUser.Email,
                     FirstName = newUser.FirstName,
                     LastName = newUser.LastName,
-                    Token = token
+                    RoleName = existRoleManager.Name,
+                    RoleId = existRoleManager.Id
                 };
 
                 return GenericResponse<UserResponseDto>.Success(userResponse, "User successfully registered.");
@@ -87,7 +102,28 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
                 if (user == null)
                     return GenericResponse<UserResponseDto>.Error("User not found.");
 
-                var token = _jwtGenerator.GenerateJwtToken(user);
+                var token = await _jwtGenerator.GenerateJwtToken(user);
+
+                // Validate if the user has any roles assigned
+                var roles = await _userManager.GetRolesAsync(user);
+
+                if (roles == null || !roles.Any())
+                {
+                    return GenericResponse<UserResponseDto>.Error("The user has no roles assigned.");
+                }
+
+                // Find the role by name
+                var roleName = roles.FirstOrDefault();
+                if (string.IsNullOrEmpty(roleName))
+                {
+                    return GenericResponse<UserResponseDto>.Error("The role name is invalid.");
+                }
+
+                var role = await _roleManager.FindByNameAsync(roleName);
+                if (role == null)
+                {
+                    return GenericResponse<UserResponseDto>.Error("Role not found.");
+                }
 
                 var userResponse = new UserResponseDto
                 {
@@ -95,6 +131,8 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
                     Email = user.Email,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
+                    RoleName = role.Name,
+                    RoleId = role.Id,  
                     Token = token
                 };
 
@@ -135,6 +173,23 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
             catch (Exception ex)
             {
                 return GenericResponse<UserResponseDto?>.Error($"An error occurred while retrieving the user: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Logs out the current user.
+        /// </summary>
+        /// <returns>A GenericResponse indicating the result of the logout operation.</returns>
+        public async Task<GenericResponse<bool>> LogoutUserAsync()
+        {
+            try
+            {
+                await _signInManager.SignOutAsync();
+                return GenericResponse<bool>.Success(true, "User successfully logged out.");
+            }
+            catch (Exception ex)
+            {
+                return GenericResponse<bool>.Error($"An error occurred during logout: {ex.Message}");
             }
         }
     }
