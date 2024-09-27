@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\PruebaTecnica-DVP-Net-Kubernetes.props" />
-</Project>
