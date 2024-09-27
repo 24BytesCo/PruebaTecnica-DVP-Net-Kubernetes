@@ -23,13 +23,8 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Models
         public string? LastName { get; set; }
 
         /// <summary>
-        /// A collection of work tasks assigned to this user.
-        /// </summary>
-        public ICollection<WorkTask>? AssignedWorkTasks { get; set; }
-
-        /// <summary>
         /// A collection of work tasks created by this user.
         /// </summary>
-        public ICollection<WorkTask>? CreatedWorkTasks { get; set; }
+        public ICollection<WorkTask>? WorkTasks { get; set; }
     }
 }

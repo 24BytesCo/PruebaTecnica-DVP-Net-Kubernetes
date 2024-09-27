@@ -14,12 +14,17 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole, string>
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configurar la relación entre User y WorkTask
-        modelBuilder.Entity<User>()
-            .HasMany(u => u.CreatedWorkTasks)
-            .WithOne(wt => wt.CreatedByUserNavigation)
-            .HasForeignKey(wt => wt.CreatedByUserId)
-            .OnDelete(DeleteBehavior.Cascade); // Ajustar según sea necesario
+        modelBuilder.Entity<WorkTask>()
+            .HasOne(w => w.CreatedByUserIdNavigation)
+            .WithMany(u => u.WorkTasks)
+            .HasForeignKey(w => w.CreatedByUserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<WorkTask>()
+            .HasOne(w => w.WorkTaskStatusNavigation)
+            .WithMany(u=> u.WorkTask)
+            .HasForeignKey(w => w.TaskStatusId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 
 

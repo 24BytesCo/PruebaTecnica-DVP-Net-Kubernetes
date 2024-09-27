@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PruebaTecnica_DVP_Net_Kubernetes.Dtos;
+using PruebaTecnica_DVP_Net_Kubernetes.Dtos.User;
 using PruebaTecnica_DVP_Net_Kubernetes.Services.UserService;
 using System.Threading.Tasks;
 

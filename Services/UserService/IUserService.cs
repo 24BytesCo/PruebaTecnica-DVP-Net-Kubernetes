@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PruebaTecnica_DVP_Net_Kubernetes.Dtos;
+using PruebaTecnica_DVP_Net_Kubernetes.Dtos.User;
 
 namespace PruebaTecnica_DVP_Net_Kubernetes.Services.UserService
 {

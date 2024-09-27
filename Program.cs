@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using PruebaTecnica_DVP_Net_Kubernetes.Data;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 using PruebaTecnica_DVP_Net_Kubernetes.Services.UserService;
+using PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService;
 using PruebaTecnica_DVP_Net_Kubernetes.Token;
 using System.Text;
 
@@ -37,6 +38,9 @@ builder.Services.AddScoped<IUserSesion, UserSesion>();
 // Registrar la implementación de IJwtGenerator
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 
+// Registrar la implementación de IWorkTaskService
+builder.Services.AddScoped<IWorkTaskService, WorkTaskService>();
+
 // Cargar configuraciones de UserData y JwtSettings
 builder.Services.Configure<UserDataConfig>(builder.Configuration.GetSection("UserData"));
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
@@ -64,6 +68,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Administrador"));
+    options.AddPolicy("RequireSupervisorRole", policy => policy.RequireRole("Supervisor"));
 });
 
 // Configurar CORS
