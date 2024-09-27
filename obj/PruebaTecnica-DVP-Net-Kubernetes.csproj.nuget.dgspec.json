@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\doradoal\\OneDrive - Willis Towers Watson\\Desktop\\.net7\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj": {}
+    "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\doradoal\\OneDrive - Willis Towers Watson\\Desktop\\.net7\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj": {
+    "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\doradoal\\OneDrive - Willis Towers Watson\\Desktop\\.net7\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj",
+        "projectUniqueName": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj",
         "projectName": "PruebaTecnica-DVP-Net-Kubernetes",
-        "projectPath": "C:\\Users\\doradoal\\OneDrive - Willis Towers Watson\\Desktop\\.net7\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj",
+        "projectPath": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj",
         "packagesPath": "C:\\Users\\doradoal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\doradoal\\OneDrive - Willis Towers Watson\\Desktop\\.net7\\PruebaTecnica-DVP-Net-Kubernetes\\obj\\",
+        "outputPath": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\doradoal\\AppData\\Roaming\\NuGet\\NuGet.Config",

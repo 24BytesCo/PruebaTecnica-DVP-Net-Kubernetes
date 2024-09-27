@@ -15,8 +15,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
+//Para no usar https en local
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

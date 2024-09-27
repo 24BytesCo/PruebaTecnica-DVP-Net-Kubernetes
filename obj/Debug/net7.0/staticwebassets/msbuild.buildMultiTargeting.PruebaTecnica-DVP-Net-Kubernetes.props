@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\PruebaTecnica-DVP-Net-Kubernetes.props" />
+</Project>

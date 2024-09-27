@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mt6tGPwnUt8=",
+  "dgSpecHash": "ZSpJ8u0livc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\doradoal\\OneDrive - Willis Towers Watson\\Desktop\\.net7\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj",
+  "projectFilePath": "C:\\cenfys\\PruebaTecnica-DVP-Net-Kubernetes\\PruebaTecnica-DVP-Net-Kubernetes.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\doradoal\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\doradoal\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
