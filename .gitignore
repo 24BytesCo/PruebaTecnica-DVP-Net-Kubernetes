@@ -1,0 +1,59 @@
+# Compiled DLLs
+*.dll
+*.exe
+*.pdb
+
+# Compiled files
+*.exe
+*.dll
+*.pdb
+*.cache
+*.ilk
+*.log
+*.vspscc
+*.vssscc
+*.user
+*.suo
+*.tmp
+*.csproj.user
+*.csproj.bak
+*.nupkg
+*.snk
+*.swp
+*.vs/
+*.vscode/
+
+# The build folders
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Logs and database
+*.log
+*.sql
+*.sqlite
+*.mdf
+*.ldf
+*.ndf
+
+# Package directories (NuGet, npm)
+node_modules/
+packages/
+
+# ASP.NET Scaffolding
+.scaffolding
+
+# JetBrains Rider
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Resharper files
+_ReSharper*/
