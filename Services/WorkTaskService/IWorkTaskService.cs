@@ -20,13 +20,13 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService
         /// Retrieves all the tasks.
         /// </summary>
         /// <returns>Returns a list of all tasks.</returns>
-        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTasksAsync();
+        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTasksAsync(int page, int pageSize);
 
         /// <summary>
         /// Recovers all tasks assigned to the logged in user.
         /// </summary>
         /// <returns>Returns a list of all tasks assigned to the logged in user.</returns>
-        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTheTasksAssignedToMe();
+        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> GetAllTheTasksAssignedToMe(int page = 1, int pageSize = 6);
 
         /// <summary>
         /// Retrieves a specific task by ID.
@@ -41,13 +41,30 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService
         /// <param name="id">Task identifier.</param>
         /// <param name="taskUpdateDto">DTO containing the updated task details.</param>
         /// <returns>Returns the updated task or an error if not found.</returns>
-        Task<GenericResponse<WorkTask>> UpdateTaskAsync(Guid id, TaskUpdateRequestDto taskUpdateDto);
+        Task<GenericResponse<bool>> UpdateTaskAsync(Guid id, TaskUpdateRequestDto taskUpdateDto);
+
+        Task<GenericResponse<bool>> UpdateTaskStateAndUserAssign(Guid id, UpdateStateAndUserAssignRequestDto requestDto);
 
         /// <summary>
         /// Deletes a task by its ID.
         /// </summary>
         /// <param name="id">Task identifier.</param>
         /// <returns>Returns a success message or an error if the task was not found.</returns>
-        Task<GenericResponse<bool>> DeleteTaskAsync(Guid id);
+        Task<GenericResponse<bool>> DeleteTaskAsync(string id);
+
+        /// <summary>
+        /// Obtiene una tarea por su identificador único.
+        /// </summary>
+        /// <param name="id">Identificador único de la tarea.</param>
+        /// <param name="requestDto">requestDto.</param>
+        /// <returns>La entidad de la tarea si se encuentra; de lo contrario, null.</returns>
+        Task<GenericResponse<bool>> UpdateTaskStateByEmployeeAsync(Guid id, UpdateTaskStateByEmployeeRequestDto requestDto);
+
+
+        /// <summary>
+        /// Recovers all tasks found.
+        /// </summary>
+        /// <returns>Returns a list of all tasks assigned to the logged in user.</returns>
+        Task<GenericResponse<List<GetAllTheTasksAssignedToMeResponseDto>>> SearchTasksDynamic(string query, int pageNumber = 1, int pageSize = 6);
     }
 }

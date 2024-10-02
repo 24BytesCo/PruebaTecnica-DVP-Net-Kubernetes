@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PruebaTecnica_DVP_Net_Kubernetes.Dtos;
 using PruebaTecnica_DVP_Net_Kubernetes.Dtos.User;
+using PruebaTecnica_DVP_Net_Kubernetes.Filters;
 using PruebaTecnica_DVP_Net_Kubernetes.Services.UserService;
-using System.Threading.Tasks;
+using System;
 
 namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
 {
+    [ServiceFilter(typeof(EncryptResponseFilter))]
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
@@ -26,13 +29,31 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
             return Ok(result);
         }
 
+        // Endpoint que requiere autorización basada en el rol Admin
+        [Authorize(Policy = "RequireAdminRole")]
+        [HttpPost("UpdateUser")]
+        public async Task<IActionResult> UpdateUser(UpdateUserRequest updateUserRequest)
+        {
+            var result = await _userService.UpdateUserRequest(updateUserRequest);
+            return Ok(result);
+        }
+
+
         // Permite acceso anónimo (sin requerir token)
         [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginRequestDto userLoginRequestDto)
         {
             var result = await _userService.LoginUserAsync(userLoginRequestDto);
-            return Ok(result);
+
+            if (result.IsSuccessful)
+            {
+                // Retorna la respuesta genérica de éxito con los datos
+                return Ok(result);
+            }
+
+            // Si falla, retorna una respuesta genérica de error
+            return BadRequest(result);
         }
 
         // Endpoint que requiere autenticación (requiere un token válido)
@@ -42,7 +63,7 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
         {
             var result = await _userService.LogoutUserAsync();
             if (!result.IsSuccessful)
-                return BadRequest(result.Message);
+                return BadRequest(GenericResponse<bool>.Error(result.Message));
 
             return Ok(result);
         }
@@ -56,6 +77,28 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Controllers
             if (result == null)
                 return Unauthorized();
 
+            return Ok(result);
+        }
+
+        [HttpGet("SearchUsersDynamic")]
+        public async Task<IActionResult> SearchUsersDynamic(string query, int page = 1, int pageSize = 6)
+        {
+            var result = await _userService.SearchTasksDynamic(query, page, pageSize);
+            if (!result.IsSuccessful)
+            {
+                return NotFound(result.Message);
+            }
+            return Ok(result);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var result = await _userService.DeleteUserAsync(id);
+            if (!result.IsSuccessful)
+            {
+                return NotFound(result.Message);
+            }
             return Ok(result);
         }
     }

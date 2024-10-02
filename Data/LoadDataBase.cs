@@ -20,22 +20,36 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Data
         /// <param name="roleManager">The role manager to handle role-related operations such as creating roles.</param>
         /// <param name="userDataConfig">Configuration object containing the user's initial data, such as FirstName, LastName, Email, and Password.</param>
         /// <returns>A task that represents the asynchronous operation of inserting user data and roles into the database.</returns>
-        public static async Task InsertDataAsync(AppDbContext appDbContext, UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IOptions<UserDataConfig> userDataConfig)
+        public static async Task InsertDataAsync(AppDbContext appDbContext, UserManager<User> userManager, RoleManager<Role> roleManager, IOptions<UserDataConfig> userDataConfig)
         {
             if (!userManager.Users.Any())
             {
                 // As sensitive data, it is fetched from appsettings.json
                 var userData = userDataConfig.Value;
 
-                // Ensure roles exist
+                // Ensure roles exist with custom 'Code' property
                 string[] roleNames = { "Administrador", "Supervisor", "Empleado" };
-                foreach (var roleName in roleNames)
+                string[] roleCodes = { "ADMIN", "SUPV", "EMP" }; // Códigos asociados a cada rol
+
+                for (int i = 0; i < roleNames.Length; i++)
                 {
+                    var roleName = roleNames[i];
+                    var roleCode = roleCodes[i];
+
+                    // Verificar si el rol ya existe
                     if (!await roleManager.RoleExistsAsync(roleName))
                     {
-                        await roleManager.CreateAsync(new IdentityRole(roleName));
+                        // Crear el rol con la propiedad Code
+                        var role = new Role
+                        {
+                            Name = roleName,
+                            Code = roleCode 
+                        };
+
+                        await roleManager.CreateAsync(role);
                     }
                 }
+
 
                 // Diccionario para mapear nombres a códigos y descripciones
                 var workTaskStatusMapping = new Dictionary<string, (string Code, string Description)>

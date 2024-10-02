@@ -12,42 +12,49 @@ using PruebaTecnica_DVP_Net_Kubernetes.Services.UserService;
 using PruebaTecnica_DVP_Net_Kubernetes.Services.WorkTaskService;
 using PruebaTecnica_DVP_Net_Kubernetes.Token;
 using System.Text;
-using AutoMapper;
 using PruebaTecnica_DVP_Net_Kubernetes.MappingProfile;
+using PruebaTecnica_DVP_Net_Kubernetes.Services;
+using PruebaTecnica_DVP_Net_Kubernetes.Filters;
+using PruebaTecnica_DVP_Net_Kubernetes.Services.TaskState;
+using PruebaTecnica_DVP_Net_Kubernetes.Services.Roles;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar Entity Framework con Identity
+// ==============================
+// 1. Configure Services
+// ==============================
+
+// 1.1. Configure Entity Framework with SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Agregar Identity y configurar los servicios de Identity para User y Role
-builder.Services.AddIdentity<User, IdentityRole>()
+// 1.2. Configure Identity with User and Role
+builder.Services.AddIdentity<User, Role>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
 
-// Registrar RoleManager y otros servicios de Identity
-builder.Services.AddScoped<RoleManager<IdentityRole>>();
-builder.Services.AddScoped<UserManager<User>>();
-builder.Services.AddScoped<SignInManager<User>>();
+// Nota: RoleManager, UserManager y SignInManager ya están registrados por AddIdentity,
+// por lo que no es necesario registrarlos explícitamente a menos que se requiera personalización.
 
-// Registrar la implementación de IUserService
+// 1.3. Register Application Services
+var encryptionEnabled = builder.Configuration.GetValue<bool>("EncryptionEnabled");
+var secretKey = builder.Configuration.GetValue<string>("EncryptionKey");
+
+builder.Services.AddSingleton(new EncryptionService(secretKey!, encryptionEnabled));
+// Registrando el filtro como un servicio
+builder.Services.AddScoped<EncryptResponseFilter>();
 builder.Services.AddScoped<IUserService, UserService>();
-
-// Registrar la implementación de IUserSesion
 builder.Services.AddScoped<IUserSesion, UserSesion>();
-
-// Registrar la implementación de IJwtGenerator
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
-
-// Registrar la implementación de IWorkTaskService
 builder.Services.AddScoped<IWorkTaskService, WorkTaskService>();
+builder.Services.AddScoped<ITaskStateService, TaskStateService>();
+builder.Services.AddScoped<IRoleService, RoleService>();
 
-// Cargar configuraciones de UserData y JwtSettings
+// 1.4. Configure Strongly Typed Settings
 builder.Services.Configure<UserDataConfig>(builder.Configuration.GetSection("UserData"));
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
-// Configuración de autenticación JWT con esquemas por defecto explícitos
+// 1.5. Configure Authentication with JWT Bearer
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -55,59 +62,77 @@ builder.Services.AddAuthentication(options =>
 })
 .AddJwtBearer(options =>
 {
+    // Configure JWT Token Validation Parameters
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"])),
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ValidateLifetime = true,
-        ClockSkew = TimeSpan.Zero
+        ValidateIssuerSigningKey = true, // Validate the signing key
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"]!)),
+        ValidateIssuer = false, // Disable issuer validation
+        ValidateAudience = false, // Disable audience validation
+        ValidateLifetime = true, // Validate token expiration
+        ClockSkew = TimeSpan.Zero // No clock skew
     };
 });
 
-// Configurar políticas de autorización
+// 1.6. Configure Authorization Policies
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Administrador"));
-    options.AddPolicy("RequireSupervisorRole", policy => policy.RequireRole("Supervisor"));
-    options.AddPolicy("RequireSupervisorRole", policy => policy.RequireRole("Administrador", "Supervisor"));
+    // Policy requiring 'Administrador' role
+    options.AddPolicy("RequireAdminRole", policy =>
+        policy.RequireRole("Administrador"));
 
+    // Policy requiring 'Supervisor' role
+    options.AddPolicy("RequireSupervisorRole", policy =>
+        policy.RequireRole("Supervisor"));
+
+    // Policy requiring either 'Administrador' or 'Supervisor' roles
+    options.AddPolicy("RequireAdminOrSupervisorRole", policy =>
+        policy.RequireRole("Administrador", "Supervisor"));
+
+    // Policy requiring either 'Administrador' or 'Supervisor' or 'Empleado' roles
+    options.AddPolicy("RequireAdminOrSupervisorOrEmployedRole", policy =>
+        policy.RequireRole("Administrador", "Supervisor", "Empleado"));
 });
 
-// Configurar CORS
-builder.Services.AddCors(o => o.AddPolicy("corsApp", builder => builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod()));
+// 1.7. Configure CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder =>
+    {
+        builder
+            .AllowAnyOrigin() // Consider restricting to specific origins in production
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
-// Añadir controladores con filtro global de autorización (opcional)
+// 1.8. Add Controllers with Global Authorization Filter
 builder.Services.AddControllers(config =>
 {
+    // Apply a global authorization policy requiring authenticated users
     var policy = new AuthorizationPolicyBuilder()
                      .RequireAuthenticatedUser()
                      .Build();
     config.Filters.Add(new AuthorizeFilter(policy));
+    config.Filters.Add<EncryptResponseFilter>();
 });
 
-// Configurar AutoMapper manualmente
-var mapperConfig = new MapperConfiguration(cfg =>
-{
-    cfg.AddProfile<MappingProfile>(); // Aquí agregas tu perfil de AutoMapper
-});
+// 1.9. Configure AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile)); // Automatically scans for profiles
 
-IMapper mapper = mapperConfig.CreateMapper();
-builder.Services.AddSingleton(mapper);
-
-// Configurar Swagger con seguridad JWT
+// 1.10. Configure Swagger with JWT Authentication
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Tu API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Your API", Version = "v1" });
 
+    // Define the security scheme for JWT Bearer tokens
     var securityScheme = new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Description = "Ingrese el token JWT con el prefijo Bearer",
+        Description = "Enter the JWT Bearer token **_only_**",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
+        Scheme = "bearer", // Must be "bearer"
         BearerFormat = "JWT",
         Reference = new OpenApiReference
         {
@@ -120,67 +145,86 @@ builder.Services.AddSwaggerGen(c =>
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
-        {
-            securityScheme,
-            Array.Empty<string>()
-        }
+        { securityScheme, Array.Empty<string>() }
     });
 });
 
+// 1.11. Add Endpoints API Explorer
 builder.Services.AddEndpointsApiExplorer();
+
+// ==============================
+// 2. Build Application
+// ==============================
 
 var app = builder.Build();
 
-// Configurar el pipeline HTTP
+// ==============================
+// 3. Configure Middleware Pipeline
+// ==============================
+
+// 3.1. Enable Swagger in Development Environment
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Middleware para manejar errores de autenticación y autorización
+// 3.2. Custom Middleware for Handling Unauthorized and Forbidden Responses
 app.Use(async (context, next) =>
 {
     await next();
 
     if (context.Response.StatusCode == 401)
     {
-        await context.Response.WriteAsync("No autorizado. Por favor, proporciona un token válido.");
+        await context.Response.WriteAsync("Unauthorized. Please provide a valid token.");
     }
     else if (context.Response.StatusCode == 403)
     {
-        await context.Response.WriteAsync("Prohibido. No tienes permisos para acceder a este recurso.");
+        await context.Response.WriteAsync("Forbidden. You do not have permission to access this resource.");
     }
 });
 
-app.UseCors("corsApp");
+// 3.3. Enable CORS
+app.UseCors("CorsPolicy");
 
-app.UseAuthentication();  // Valida el token JWT
-app.UseAuthorization();   // Aplica las políticas de autorización
+// 3.4. Enable Authentication and Authorization
+app.UseAuthentication(); // Validates the token
+app.UseAuthorization();  // Applies authorization policies
 
+// 3.5. Map Controllers
 app.MapControllers();
 
-// Inicializar la base de datos
-using (var ambient = app.Services.CreateScope())
+// 3.6. Initialize Database and Seed Data
+using (var scope = app.Services.CreateScope())
 {
-    var services = ambient.ServiceProvider;
+    var services = scope.ServiceProvider;
 
     try
     {
-        var userManager = services.GetRequiredService<UserManager<User>>();
-        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
         var context = services.GetRequiredService<AppDbContext>();
+        var userManager = services.GetRequiredService<UserManager<User>>();
+        var roleManager = services.GetRequiredService<RoleManager<Role>>();
         var userDataConfig = services.GetRequiredService<IOptions<UserDataConfig>>();
 
-        await context.Database.MigrateAsync(); // Aplicar migraciones
+        // Apply pending migrations
+        await context.Database.MigrateAsync();
+
+        // Seed initial data
         await LoadDataBase.InsertDataAsync(context, userManager, roleManager, userDataConfig);
+
+        // Save changes if any
         await context.SaveChangesAsync();
     }
     catch (Exception ex)
     {
-        // Aquí podrías registrar el error en un log o similar
-        throw;
+        // Log the exception (consider using a logging framework)
+        Console.WriteLine($"An error occurred during migration or seeding: {ex.Message}");
+        throw; // Re-throw the exception after logging
     }
 }
+
+// ==============================
+// 4. Run Application
+// ==============================
 
 app.Run();

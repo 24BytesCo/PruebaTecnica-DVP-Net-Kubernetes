@@ -13,5 +13,6 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Dtos.User
         public string? NameCompleted { get; set; }
         public string? RoleId { get; set; }
         public string? RoleName { get; set; }
+        public string? RoleCode { get; set; }
     }
 }

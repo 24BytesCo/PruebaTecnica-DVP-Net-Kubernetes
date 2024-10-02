@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using PruebaTecnica_DVP_Net_Kubernetes.Dtos.Role;
+using PruebaTecnica_DVP_Net_Kubernetes.Dtos.taskStates;
+using PruebaTecnica_DVP_Net_Kubernetes.Dtos.User;
 using PruebaTecnica_DVP_Net_Kubernetes.Dtos.WorkTask;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 
@@ -49,6 +52,23 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.MappingProfile
                 .ForPath(destination => destination.AssignedToUserNavigation!.LastName, opt => opt.MapFrom(src => src.UserAssignedLastName))
 
                 .ReverseMap();
+
+            CreateMap<TaskStatesResponseDto, WorkTaskStatus>()
+               //Basic
+               .ForMember(destination => destination.WorkTaskStatusId, opt => opt.MapFrom(src => src.TaskStateId))
+               .ForMember(destination => destination.Name, opt => opt.MapFrom(src => src.TaskStateName))
+               .ForMember(destination => destination.Code, opt => opt.MapFrom(src => src.TaskStateCode))
+               
+               .ReverseMap();
+
+
+            CreateMap<AllRolesResponseDto, Role>()
+               //Basic
+               .ForMember(destination => destination.Id, opt => opt.MapFrom(src => src.Id))
+               .ForMember(destination => destination.Name, opt => opt.MapFrom(src => src.Name))
+               .ForMember(destination => destination.Code, opt => opt.MapFrom(src => src.Code))
+               .ReverseMap();
+
         }
     }
 }

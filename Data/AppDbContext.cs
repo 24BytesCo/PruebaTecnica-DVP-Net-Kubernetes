@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using PruebaTecnica_DVP_Net_Kubernetes.Models;
 
 namespace PruebaTecnica_DVP_Net_Kubernetes.Data;
-public class AppDbContext : IdentityDbContext<User, IdentityRole, string>
+public class AppDbContext : IdentityDbContext<User, Role, string>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -24,7 +24,7 @@ public class AppDbContext : IdentityDbContext<User, IdentityRole, string>
             .HasOne(w => w.AssignedToUserNavigation)
             .WithMany(u => u.AssignedWorkTasks)
             .HasForeignKey(w => w.AssignedToUserId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<WorkTask>()
             .HasOne(w => w.WorkTaskStatusNavigation)

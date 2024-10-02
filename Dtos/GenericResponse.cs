@@ -26,19 +26,26 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Dtos
         /// </summary>
         public T? Data { get; set; }
 
+
+        /// <summary>
+        /// The TotalCount being returned in the response.
+        /// </summary>
+        public int? TotalCount { get; set; }
+
         /// <summary>
         /// Creates a successful response with the provided data and message.
         /// </summary>
         /// <param name="data">The data to include in the response.</param>
         /// <param name="message">An optional success message.</param>
         /// <returns>A GenericResponse instance representing a successful operation.</returns>
-        public static GenericResponse<T> Success(T data, string message)
+        public static GenericResponse<T> Success(T data, string message, int totalCount = 0)
         {
             return new GenericResponse<T>
             {
                 IsError = false,
                 Message = message,
-                Data = data
+                Data = data,
+                TotalCount = totalCount
             };
         }
 
@@ -53,7 +60,8 @@ namespace PruebaTecnica_DVP_Net_Kubernetes.Dtos
             {
                 IsError = true,
                 Message = message,
-                Data = default
+                Data = default,
+                TotalCount = 0
             };
         }
     }
