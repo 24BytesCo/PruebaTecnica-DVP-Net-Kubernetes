@@ -74,6 +74,14 @@ Dependiendo de la configuración en el archivo `appsettings.json`, las respuesta
 ### 4. Base de Datos
 Se utiliza SQL Server como sistema de gestión de bases de datos, y Entity Framework Core como ORM para interactuar con la base de datos. La cadena de conexión está configurada en el archivo `appsettings.json`.
 
+## Creación Automática de Datos
+
+En la primera ejecución de la aplicación, si no existen usuarios ni roles en la base de datos, el sistema creará automáticamente los siguientes datos:
+- **Roles**: Administrador, Supervisor y Empleado.
+- **Usuario Administrador por Defecto**: El usuario administrador será creado con los datos configurados en el archivo `appsettings.json`.
+
+Esta creación automática de datos asegura que el sistema esté listo para su uso después de la primera ejecución sin necesidad de intervención manual.
+
 ## Archivo de Configuración (appsettings.json)
 
 El archivo `appsettings.json` contiene configuraciones clave del proyecto, tales como:
@@ -108,4 +116,3 @@ Dentro de la base del proyecto, encontrarás un archivo llamado `API Task Flow M
 
 ### Ejecución con Docker:
 La API también puede ser ejecutada dentro de un contenedor Docker. Asegúrate de que Docker esté instalado y configurado correctamente en tu sistema.
-
