@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "88387b9b-a47d-40b3-844d-b2bf9e11f37b",
+		"name": "API Task Flow Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32349254"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Create New User Yuli",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Yuli\",\r\n  \"lastName\": \"Ñañez\",\r\n  \"email\": \"yuli@yopmail.com\",\r\n  \"password\": \"5Mr0ZvgT*\",\r\n   \"roleId\": \"2d4102f4-5251-45ed-8e17-a9cbe532b67f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Yuli\",\r\n  \"lastName\": \"Ñañez\",\r\n  \"email\": \"yuli@yopmail.com\",\r\n  \"password\": \"5Mr0ZvgT*\",\r\n   \"roleId\": \"2d4102f4-5251-45ed-8e17-a9cbe532b67f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Create New User Maria Isabela",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"Maria Isabela\",\r\n  \"lastName\": \"Dorado\",\r\n  \"email\": \"maria@yopmail.com\",\r\n  \"password\": \"5Mr0ZvgT*\",\r\n  \"roleId\": \"632f73f8-56b2-4d49-8931-6d3507e42a33\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Yuli",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"yuli@yopmail.com\",\r\n  \"password\": \"5Mr0ZvgT*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Maria Isabela",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"maria@yopmail.com\",\r\n  \"password\": \"5Mr0ZvgT*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Login Alexis",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"alexis11dimen@gmail.com\",\r\n  \"password\": \"5Mr0ZvgT*\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Work Task",
+			"item": [
+				{
+					"name": "Create New",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Mi Quinta Tarea\",\r\n  \"description\": \"La Quinta tarea creada desde postman con seguridad activa\",\r\n  \"userAssignedId\": \"dc00eacb-8db9-4be6-a77c-a31b2864a438\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Task/create"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTaskStateAndUserAssign",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    //Alexis\r\n  \"newUserAssignedId\": \"dc00eacb-8db9-4be6-a77c-a31b2864a438\",\r\n  //En proceso\r\n  \"newWorkTaskStateId\": \"9933bb7a-2b0c-4a82-aae3-ca539d5a55fe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Task/0e05d4b2-363e-4d29-8c90-f963744fdb6b/UpdateTaskStateAndUserAssign"
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateTask",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6IjQxYzE4MWYxLWQ4YjktNGY4NS1iNmI3LWVjNmQzYmIxMDZkMSIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NDQyMjAxLCJleHAiOjE3Mjc2MTUwMDEsImlhdCI6MTcyNzQ0MjIwMX0.qafWsj0GHrnkt8ZL-P5MZmjKIgzxMB0MTUPjgNwFhsxQJGbh7arv0ALvYOuPSw3pkW8f7rNdVQlgT8GvIguLGw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"Title\": \"Mi Tercer tarea\",\r\n  \"description\": null,\r\n  \"newUserAssignedId\": \"1746c24f-87a8-4b23-9aff-780a70555a1d\",\r\n  \"newWorkTaskStateId\": \"36f0025e-923e-4312-af60-177fc27acc46\"\r\n}\r\n\r\n// {\r\n//     //Alexis\r\n//   \"newUserAssignedId\": \"dc00eacb-8db9-4be6-a77c-a31b2864a438\",\r\n//   //En proceso\r\n//   \"newWorkTaskStateId\": \"9933bb7a-2b0c-4a82-aae3-ca539d5a55fe\"\r\n// }\r\n\r\n// {\r\n//     TaskId = \"eec9ee7f-8d4d-4dbf-85a0-3086906ab235\",\r\n//     Title = \"Mi Tercer Tarea\",\r\n//     Description = \"La Tercera tarea creada desde postman con seguridad activa\",\r\n//     AssignedToUserId = \"9903cab7-140a-4d61-8d7d-e0ec898b9fde\",\r\n//     CreatedByUserId = \"dc00eacb-8db9-4be6-a77c-a31b2864a438\",\r\n//     WorkTaskStatusId = \"11d6cdcb-48f0-4fa4-bcc1-ed53ef419aeb\"\r\n// }\r\n\r\n//Tarea completada:\r\n// 36f0025e-923e-4312-af60-177fc27acc46",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Task/eec9ee7f-8d4d-4dbf-85a0-3086906ab235"
+					},
+					"response": []
+				},
+				{
+					"name": "Update State Task Employed",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Status</th>\r",
+									"        <th>Error Message</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>400</td>\r",
+									"        <td>Forbidden. You do not have permission to access this resource.</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return { response: pm.response.text() }\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJpYUB5b3BtYWlsLmNvbSIsIlVzZXJJZCI6IjE3NDZjMjRmLTg3YTgtNGIyMy05YWZmLTc4MGE3MDU1NWExZCIsIkVtYWlsIjoibWFyaWFAeW9wbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiTWFyaWEgSXNhYmVsYSBEb3JhZG8iLCJyb2xlIjoiRW1wbGVhZG8iLCJuYmYiOjE3Mjc2MzgzNjQsImV4cCI6MTcyNzgxMTE2NCwiaWF0IjoxNzI3NjM4MzY0fQ.q8o6sDKm-yZWF2CAxivyHJHFBVNO0gQUf9fWrur5PGXfVPJBLLuyySvyeS9ZRKgeHajqVsKuJ-9p5iGqT6wMbg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"newWorkTaskStateId\": \"36f0025e-923e-4312-af60-177fc27acc46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:44328/api/Task/eec9ee7f-8d4d-4dbf-85a0-3086906ab235/UpdateTaskState"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Assigned To Me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJpYUB5b3BtYWlsLmNvbSIsIlVzZXJJZCI6IjE3NDZjMjRmLTg3YTgtNGIyMy05YWZmLTc4MGE3MDU1NWExZCIsIkVtYWlsIjoibWFyaWFAeW9wbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiTWFyaWEgSXNhYmVsYSBEb3JhZG8iLCJyb2xlIjoiRW1wbGVhZG8iLCJuYmYiOjE3Mjc2MzgzNjQsImV4cCI6MTcyNzgxMTE2NCwiaWF0IjoxNzI3NjM4MzY0fQ.q8o6sDKm-yZWF2CAxivyHJHFBVNO0gQUf9fWrur5PGXfVPJBLLuyySvyeS9ZRKgeHajqVsKuJ-9p5iGqT6wMbg",
+								"type": "text"
+							}
+						],
+						"url": "https://localhost:44328/api/Task/GetAllAssignedToMe"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJpYUB5b3BtYWlsLmNvbSIsIlVzZXJJZCI6IjE3NDZjMjRmLTg3YTgtNGIyMy05YWZmLTc4MGE3MDU1NWExZCIsIkVtYWlsIjoibWFyaWFAeW9wbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiTWFyaWEgSXNhYmVsYSBEb3JhZG8iLCJyb2xlIjoiRW1wbGVhZG8iLCJuYmYiOjE3Mjc2MzgzNjQsImV4cCI6MTcyNzgxMTE2NCwiaWF0IjoxNzI3NjM4MzY0fQ.q8o6sDKm-yZWF2CAxivyHJHFBVNO0gQUf9fWrur5PGXfVPJBLLuyySvyeS9ZRKgeHajqVsKuJ-9p5iGqT6wMbg",
+								"type": "text"
+							}
+						],
+						"url": "https://localhost:44328/api/task/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6ImRjMDBlYWNiLThkYjktNGJlNi1hNzdjLWEzMWIyODY0YTQzOCIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NzkzNjA2LCJleHAiOjE3Mjc5NjY0MDYsImlhdCI6MTcyNzc5MzYwNn0.W_iM-5q7Z-h6nty6yV3cXtFC8u8W45SBSahmmxiQrpL8j6gFKtIBvmeqbX06qmNlbUAodX3VE7LqTcjlLu8QzA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44328/api/Task/SearchTasksDynamic?query=aeqweqw",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44328",
+							"path": [
+								"api",
+								"Task",
+								"SearchTasksDynamic"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "aeqweqw"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6ImRjMDBlYWNiLThkYjktNGJlNi1hNzdjLWEzMWIyODY0YTQzOCIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3NzQ1MjM1LCJleHAiOjE3Mjc5MTgwMzUsImlhdCI6MTcyNzc0NTIzNX0.qSKuc-dg2admqvPekmXnu5MpbOssUdSbZ-ovvha9-9PAlLRU4XxqFMfH7UMWRzyhYSjT4C07zoTuMKyK8Mhwow",
+								"type": "text"
+							}
+						],
+						"url": "https://localhost:44328/api/User/GetAllUsersReducer"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "task States",
+			"item": [
+				{
+					"name": "Get All task States",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJtYXJpYUB5b3BtYWlsLmNvbSIsIlVzZXJJZCI6IjE3NDZjMjRmLTg3YTgtNGIyMy05YWZmLTc4MGE3MDU1NWExZCIsIkVtYWlsIjoibWFyaWFAeW9wbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiTWFyaWEgSXNhYmVsYSBEb3JhZG8iLCJyb2xlIjoiRW1wbGVhZG8iLCJuYmYiOjE3Mjc2MzgzNjQsImV4cCI6MTcyNzgxMTE2NCwiaWF0IjoxNzI3NjM4MzY0fQ.q8o6sDKm-yZWF2CAxivyHJHFBVNO0gQUf9fWrur5PGXfVPJBLLuyySvyeS9ZRKgeHajqVsKuJ-9p5iGqT6wMbg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:44328/api/TaskState/all",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44328",
+							"path": [
+								"api",
+								"TaskState",
+								"all"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJhbGV4aXMxMWRpbWVuQGdtYWlsLmNvbSIsIlVzZXJJZCI6ImRjMDBlYWNiLThkYjktNGJlNi1hNzdjLWEzMWIyODY0YTQzOCIsIkVtYWlsIjoiYWxleGlzMTFkaW1lbkBnbWFpbC5jb20iLCJOYW1lQ29tcGxldGVkIjoiQWxleGlzIERvcmFkbyIsInJvbGUiOiJBZG1pbmlzdHJhZG9yIiwibmJmIjoxNzI3ODE4NzAyLCJleHAiOjE3Mjc5OTE1MDIsImlhdCI6MTcyNzgxODcwMn0.vlxbhVq5aOz8DlyBVAHEVSYk2qnWOXeWZwiNkOHElAzIa18TWx9CtxED8b0JjHnauGYrRlcj68C-dknmoAlCOg",
+								"type": "text"
+							}
+						],
+						"url": "https://localhost:44328/api/role/all"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "id task",
+			"value": "idTask"
+		}
+	]
+}
