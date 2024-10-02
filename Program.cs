@@ -26,7 +26,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // 1.1. Configure Entity Framework with SQL Server
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    sqlServerOptions => sqlServerOptions.CommandTimeout(600)));
+
 
 // 1.2. Configure Identity with User and Role
 builder.Services.AddIdentity<User, Role>()
