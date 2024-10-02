@@ -8,7 +8,7 @@ TaskFlowManager es una API construida con ASP.NET Core que permite la gestión d
 ## Despliegue en Heroku
 
 La API ha sido desplegada en Heroku y puede ser accedida en la siguiente URL:
-**[TaskFlowManager API en Heroku]: https://api-task-manager-dotnet-daf3f964d672.herokuapp.com/api/**
+**TaskFlowManager API en Heroku: https://api-task-manager-dotnet-daf3f964d672.herokuapp.com/api/**
 
 ### Usuario Administrador por Defecto:
 - **Email**: dorado@yopmail.com
