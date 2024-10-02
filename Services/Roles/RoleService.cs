@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Azure;
 using Microsoft.EntityFrameworkCore;
 using PruebaTecnica_DVP_Net_Kubernetes.Data;
 using PruebaTecnica_DVP_Net_Kubernetes.Dtos;
